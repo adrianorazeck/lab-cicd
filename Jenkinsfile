@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         stage('Build') {
-			agent {
+	    agent {
                 docker { image 'maven:3-alpine' }
             }
             steps {
@@ -16,7 +16,7 @@ pipeline {
 		success {
 			githubNotify status: "SUCCESS", 
 						 credentialsId: "github", 
-						 account: "prof-eduardo-galego", 
+						 account: "adrianorazeck", 
 						 repo: "lab-cicd",
 						 description: "Sucesso"
 						 
@@ -24,7 +24,7 @@ pipeline {
         failure {
             githubNotify status: "FAILURE", 
 						 credentialsId: "github", 
-						 account: "prof-eduardo-galego", 
+						 account: "adrianorazeck", 
 						 repo: "lab-cicd",
 						 description: "Erro"
         }
